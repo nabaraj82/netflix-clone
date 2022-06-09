@@ -14,7 +14,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Test Heading</h1>
       { !hide && <UnderConstruction handleCloseClick={handleCloseClick}/>}
       <Nav />
       <Banner />
