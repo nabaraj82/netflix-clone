@@ -33,6 +33,7 @@
     padding-top: 10px;
 }
 .banner_button{
+    display: flex;
     margin-right: 20px;
     padding: 5px 16px;
     border: none;
@@ -41,6 +42,13 @@
     background-color: #f52626;
     color: white;
     transition: all 500ms;
+    align-items: center;
+}
+.button_playIcon{
+    margin-right: 4px;
+}
+.button_myListIcon{
+    margin-right: 4px;
 }
 .banner_button:hover{
     filter: invert(100%);

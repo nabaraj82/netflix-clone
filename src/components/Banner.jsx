@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import '../style/Banner.css'
 import axios from '../axios'
 import requests from '../requests'
@@ -35,8 +37,14 @@ const Banner = () => {
                 <h4 className='banner_rating'><span>Rating </span>{movie.vote_average}</h4>
             </div>
             <div className='banner_buttons'>
-                <button className="banner_button">Play</button>
-                <button className="banner_button">My List</button>
+                <button className="banner_button">
+                    <PlayCircleFilledWhiteOutlinedIcon className='button_playIcon'/>
+                    Play
+                    </button>
+                <button className="banner_button">
+                <AddCircleOutlineOutlinedIcon className='button_myListIcon' />
+                MyList
+                </button>
             </div>
             
             
