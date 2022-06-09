@@ -1,0 +1,33 @@
+.nav_container{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 400ms;
+}
+
+.nav_logo{
+    max-height: 70px;
+    object-fit: contain;
+    margin-left: 20px;
+}
+.nav_features{
+    display: flex;
+}
+.nav_featureOption{
+    margin-top: 31px;
+    margin-right: 10px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.nav_avatar{
+    max-height: 40px;
+    margin-right: 30px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+.showBackground{
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+}

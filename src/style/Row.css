@@ -1,0 +1,37 @@
+.row_container{
+    margin-left: 20px;
+}
+.row_posters{
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.row_posters::-webkit-scrollbar{
+    display: none;
+}
+
+.row_poster{
+    width: 100%;
+    object-fit: contain;
+    max-height: 100px;
+    margin-right: 10px;
+    display: flex;
+    transition: 300ms;
+    padding: 20px;
+
+}
+.row_poster:hover{
+    transform: scale(1.2);
+}
+.row_title{
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.row_posterLarge{
+    max-height: 250px;
+    
+}
+.row_posterLarge:hover{
+    transform: scale(1.1);
+}
