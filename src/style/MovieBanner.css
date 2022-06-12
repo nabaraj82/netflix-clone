@@ -1,0 +1,41 @@
+.movieBanner{
+    display: flex;
+    height: 500px;
+    width: 100%;
+}
+
+.movieBanner_info{
+    display: flex;
+    padding-top: 140px;
+    overflow-wrap: break-word;
+    flex-direction: column;
+    object-fit: contain;
+    padding-left: 50px;
+    max-width: 50%;
+    background-repeat: no-repeat;
+    align-items: left;
+background-image: linear-gradient(270deg,transparent, #000000 50%, #000000 );
+}
+.movie_title{
+    font-weight: 400;
+}
+.movie_info{
+    display: flex;
+}
+.attributes{
+    font-family: Bebas Neue;
+    font-weight: 400;
+    margin-right: 10px;
+    color:#ffffff;
+}
+
+.rating{
+    color: #62ee97;
+    opacity: 1;
+    font-weight: 400;
+}
+.movie_overview{
+    padding-top: 8px;
+    font-family: Consolas;
+    font-weight: 400;
+} 

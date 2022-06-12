@@ -1,10 +1,8 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Banner from './components/Banner'
-import Nav from './components/Nav'
-import Row from './components/Row'
-import UnderConstruction from './components/UnderConstruction'
-import requests from './requests'
+import HomePageContainer from './Container/HomePageContainer'
+import MovieDetailsContainer from './Container/MovieDetailsContainer'
 
 function App() {
   const [hide, setHide] = useState(false);
@@ -14,15 +12,26 @@ function App() {
 
   return (
     <div className="App">
-      { !hide && <UnderConstruction handleCloseClick={handleCloseClick}/>}
-      <Nav />
-      <Banner />
-      <Row fetchURL={requests.fetchNetflixOriginals} title="Netflix Originals" isLarge={true}/>
-      <Row fetchURL={requests.fetchTrending} title="Trending"/>
-      <Row fetchURL={requests.fetchActionMovies} title="Acton Movies"/>
-      <Row fetchURL={requests.fetchComedyMovies} title="Comedy Movies"/>
-      <Row fetchURL={requests.fetchDocumentaries} title="Documentaries"/>
-      <Row fetchURL={requests.fetchHorrorMovies} title="Horror Movies"/>
+      <Router>
+        <Routes>
+          <Route path="/home" 
+          element={
+          <HomePageContainer 
+          handleCloseClick={handleCloseClick}
+          hide={hide}
+          />
+        } 
+          />
+        <Route exact path="/movie/details" 
+        element={
+        <MovieDetailsContainer 
+        hide={hide} 
+        handleCloseClick={handleCloseClick} 
+        />
+        } 
+        />
+        </Routes>
+      </Router>
     </div>
   )
 }
