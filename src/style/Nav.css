@@ -8,7 +8,7 @@
 }
 
 .nav_logo{
-    max-height: 70px;
+    max-height: 60px;
     object-fit: contain;
     margin-left: 20px;
 }
@@ -31,6 +31,6 @@
     background-color: rgba(0, 0, 0, 0.8);
     top: 0;
 }
-.darkBackground{
+/* .darkBackground{
     background-color: rgba(0, 0, 0, 1);
-}
+} */

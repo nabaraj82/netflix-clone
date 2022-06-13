@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import { truncate} from '../functions/truncate';
+import { truncateDate } from '../functions/truncateDate';
 import '../style/Banner.css'
 import axios from '../axios'
 import requests from '../requests'
@@ -16,12 +18,12 @@ const Banner = () => {
         }
         fetchData()
     },[])
-   const truncate = (str, n) => {
-       return str?.length > n ? str.substr(0, n-1)+"...": str;
-   }
-   const truncateDate = (str) =>{
-    return str?.slice(0, 4)
-   }
+//    const truncate = (str, n) => {
+//        return str?.length > n ? str.substr(0, n-1)+"...": str;
+//    }
+//    const truncateDate = (str) =>{
+//     return str.length > 4? str.slice(0, 4) : str;
+//    }
   return (
     <header className='banner_container'
     style={{

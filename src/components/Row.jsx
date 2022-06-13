@@ -7,7 +7,6 @@ import movieTrailer from 'movie-trailer'
 const Row = ({fetchURL, title, isLarge}) => {
     const navigate = useNavigate();
     const toDetailsPage = (movie) =>{
-        console.log("movie", movie)      
          navigate('/movie/details',{state:{name: movie}});
     }
     const baseURL = "https://image.tmdb.org/t/p/original";

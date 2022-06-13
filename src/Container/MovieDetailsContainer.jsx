@@ -7,7 +7,7 @@ const MovieDetailsContainer = ({hide,handleCloseClick}) => {
   return (
     <div className='movieDetails_Container'>
        { !hide && <UnderConstruction handleCloseClick={handleCloseClick}/>}
-       <Nav backgroundCss='dark'/>
+       <Nav/>
       <MovieDetails />
     </div>
   )

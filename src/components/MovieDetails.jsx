@@ -7,6 +7,9 @@ const MovieDetails = () => {
   return (
     <>
       <MovieBanner movie={movie}/>
+      <div>
+        <h1>Trailer</h1>
+      </div>
     </>
   );
 };

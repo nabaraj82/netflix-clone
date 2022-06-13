@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/home" 
+          <Route path="/" 
           element={
           <HomePageContainer 
           handleCloseClick={handleCloseClick}

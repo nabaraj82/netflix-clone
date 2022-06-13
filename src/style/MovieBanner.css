@@ -1,6 +1,6 @@
 .movieBanner{
     display: flex;
-    height: 500px;
+    height: 400px;
     width: 100%;
 }
 
@@ -11,7 +11,7 @@
     flex-direction: column;
     object-fit: contain;
     padding-left: 50px;
-    max-width: 50%;
+    max-width: 35%;
     background-repeat: no-repeat;
     align-items: left;
 background-image: linear-gradient(270deg,transparent, #000000 50%, #000000 );
@@ -21,21 +21,62 @@ background-image: linear-gradient(270deg,transparent, #000000 50%, #000000 );
 }
 .movie_info{
     display: flex;
+    align-items: center ;
 }
 .attributes{
+    border: 2px solid green;
     font-family: Bebas Neue;
     font-weight: 400;
     margin-right: 10px;
     color:#ffffff;
+    padding: 2px 5px;
+    border-radius: 2px;
 }
 
 .rating{
+    display:flex;
+    border: none;
     color: #62ee97;
     opacity: 1;
     font-weight: 400;
+    align-items: center;
+}
+.tmdb_logo{
+    height: 45px;
 }
 .movie_overview{
     padding-top: 8px;
     font-family: Consolas;
     font-weight: 400;
+    font-size: 14px;
+    text-align: justify;
 } 
+@media only  screen and (max-width: 760px){
+    .moveBanner{
+        height: 350px;
+    }
+
+    .attributes{
+        border: 1px solid green;
+        font-size: 10px;
+    }
+    .rating{
+        border: none;
+    }
+    .tmdb_logo{
+        height: 20px;
+    }
+    .movieBanner_info{
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-image: none;
+    
+    }
+    .movie_overview{
+        font-size: 12px;
+    }
+}
+.font_size_small{
+    font-size: 13px;
+}
