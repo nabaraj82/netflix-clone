@@ -18,15 +18,15 @@ const MovieBanner = ({ movie }) => {
     };
     fetchData();
   }, []);
-  console.log(movieDetail);
-  console.log("length: ", movieDetail.genres?.length);
+  console.log(movie.id);
+  // console.log("length: ", movieDetail.genres?.length);
   return (
     <div
       className="movieBanner"
       style={{
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
         backgroundSize: "cover",
-        backgroundPosition: "center -18px",
+        // backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -39,7 +39,7 @@ const MovieBanner = ({ movie }) => {
           <h4 className="attributes">
             {movie.origin_country || movie.original_language}
           </h4>
-          <h4 className={`attributes ${movieDetail.genres.length> 4? "font_size_small" : ""}` }>
+          <h4 className={`attributes ${movieDetail.genres?.length> 4? "font_size_small" : ""}` }>
             {movieDetail.genres?.map((genre) => (
               <span key={genre.id}>
                 {genre.name +
