@@ -1,25 +1,45 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 import "../style/MovieBanner.css";
-import { API_KEY } from "../requests";
+// import movieTrailer from "movie-trailer";
+import YouTube from "react-youtube";
+// import { API_KEY } from "../requests";
 import { truncate } from "../functions/truncate";
 import { truncateDate } from "../functions/truncateDate";
-const MovieBanner = ({ movie }) => {
-  const [movieDetail, setMovieDetail] = useState([]);
+import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
+import VideocamIcon from '@mui/icons-material/Videocam';
+const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID , handleClick}) => {
+  // const [movieDetail, setMovieDetail] = useState([]);
+  // const [trailerID, setTrailerID] = useState("");
   const releaseDate = movie.first_air_date || movie.release_date;
-  useEffect(() => {
-    const fetchData = async () => {
-      await axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}&language=en-US`
-        )
-        .then((response) => setMovieDetail(response.data))
-        .catch((error) => console.log(error.message));
-    };
-    fetchData();
-  }, []);
-  console.log(movie.id);
-  // console.log("length: ", movieDetail.genres?.length);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await axios
+  //       .get(
+  //         `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}&language=en-US`
+  //       )
+  //       .then((response) => setMovieDetail(response.data))
+  //       .catch((error) => console.log(error.message));
+  //   };
+  //   fetchData();
+  // }, []);
+  // const onClickTrailerButton = () =>{
+  //   if(trailerID){
+  //     setTrailerID("")
+  //   }else{
+  //     movieTrailer(movie?.name || movie?.title || movie?.original_name || movieDetail?.title || movieDetail?.original_title)
+  //     .then( url => {
+  //       const urlParams = new URLSearchParams( new URL(url).search);
+  //       setTrailerID(urlParams.get("v"));
+  //     })
+  //     .catch(error => error.message)
+  //   }
+  // }
+  const opts ={
+    playerVars:{
+      autoplay: 1,
+    }
+  }
   return (
     <div
       className="movieBanner"
@@ -55,13 +75,29 @@ const MovieBanner = ({ movie }) => {
             ))}
           </h4>
           <h3 className="attributes rating">
-            <img className="tmdb_logo" src="http://surl.li/ceoiz" />:{" "}
+            <img className="tmdb_logo" src="https://firebasestorage.googleapis.com/v0/b/netflix-clone-81e85.appspot.com/o/tmdb.png?alt=media&token=0c410ede-ca21-4d1d-8c17-26b0dbbb2b16" />:{" "}
             {movie.vote_average}
           </h3>
         </div>
         <h3 className="movie_overview">{truncate(movie.overview, 150)}</h3>
+        <div className='movieBanner_buttons'>
+                <button className="movieBanner_button">
+                    <PlayCircleFilledWhiteOutlinedIcon className='button_playIcon'/>
+                    Watch
+                    </button>
+                <button onClick={()=> onClickTrailerButton()}  className="movieBanner_button">
+                <VideocamIcon className='button_myListIcon' />
+                Trailer
+                </button>
+            </div>
       </div>
-      {/* <div className='banner_faded' /> */}
+      {trailerID && <YouTube videoId={trailerID}  opts={opts}/>}
+      {/* <div className="movie_details">
+        
+      </div> */}
+      <div className="movieBanner_faded">
+        <button onClick={() =>handleClick("overview")} className="movie_button">Overview</button>
+        <button onClick={() =>handleClick("company")} className="movie_button">Production Companies</button></div>
     </div>
   );
 };

@@ -80,3 +80,70 @@ background-image: linear-gradient(270deg,transparent, #000000 50%, #000000 );
 .font_size_small{
     font-size: 13px;
 }
+
+.movieBanner_buttons{
+    display: flex;
+    padding-top: 30px;
+}
+.movieBanner_button{
+    display: flex;
+    margin-right: 20px;
+    padding: 5px 16px;
+    border: 1px solid white;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    background-color: #111;
+    color: white;
+    transition: all 500ms;
+    align-items: center;
+}
+.button_playIcon{
+    margin-right: 4px;
+}
+.button_myListIcon{
+    margin-right: 4px;
+}
+.movieBanner_button:hover{
+    filter: invert(100%);
+}
+
+.movie_details{
+    position: r;
+    display: flex;
+    height: 20px;
+    margin-bottom: 0;;
+}
+.movieBanner_faded{
+    position: inherit;
+    display: flex;
+    background-image: linear-gradient(180deg, transparent, rgba(37,37,37,0.7), #111);
+    width: 100%;
+    height: 50px;
+    margin-top: 350px;
+    margin-left: -200px;
+}
+.movie_button{
+    background-color: transparent;
+    margin-left: 50px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: white;
+    height: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+    padding-top: 8px;
+    border: none;    
+    transition-property: border;
+    transition: 4s;
+}
+.movie_button:after {
+    transition: all ease-in-out .2s;
+    background: none repeat scroll 0 0 #ffffff;
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+}
+.movie_button:hover:after {
+    width: 100%;
+}
