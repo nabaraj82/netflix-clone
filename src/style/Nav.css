@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: space-between;
     transition: all 400ms;
+    z-index: 999;
 }
 
 .nav_logo{

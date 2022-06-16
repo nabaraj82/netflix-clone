@@ -4,11 +4,13 @@ import "../style/MovieBanner.css";
 // import movieTrailer from "movie-trailer";
 import YouTube from "react-youtube";
 // import { API_KEY } from "../requests";
-import { truncate } from "../functions/truncate";
+import styled from 'styled-components'
 import { truncateDate } from "../functions/truncateDate";
 import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
 import VideocamIcon from '@mui/icons-material/Videocam';
+import { red } from "@mui/material/colors";
 const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID , handleClick}) => {
+  const runtime = movieDetail.runtime/60;
   // const [movieDetail, setMovieDetail] = useState([]);
   // const [trailerID, setTrailerID] = useState("");
   const releaseDate = movie.first_air_date || movie.release_date;
@@ -41,15 +43,10 @@ const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID , han
     }
   }
   return (
-    <div
-      className="movieBanner"
-      style={{
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-        backgroundSize: "cover",
-        // backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-      }}
+    <Container
+     movie={movie}
     >
+      <MoviePoster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}/>   
       <div className="movieBanner_info">
         <h1 className="movie_title">
           {movie.name || movie.title || movie.original_name}
@@ -78,8 +75,9 @@ const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID , han
             <img className="tmdb_logo" src="https://firebasestorage.googleapis.com/v0/b/netflix-clone-81e85.appspot.com/o/tmdb.png?alt=media&token=0c410ede-ca21-4d1d-8c17-26b0dbbb2b16" />:{" "}
             {movie.vote_average}
           </h3>
+          <h3 className="attributes duration"><span>Duration: {runtime.toFixed(2)} hrs </span></h3>
         </div>
-        <h3 className="movie_overview">{truncate(movie.overview, 150)}</h3>
+        <h3 className="movie_overview">{movie.overview}</h3>
         <div className='movieBanner_buttons'>
                 <button className="movieBanner_button">
                     <PlayCircleFilledWhiteOutlinedIcon className='button_playIcon'/>
@@ -91,15 +89,47 @@ const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID , han
                 </button>
             </div>
       </div>
-      {trailerID && <YouTube videoId={trailerID}  opts={opts}/>}
+      {trailerID && <YouTube className="youtube" videoId={trailerID}  opts={opts}/>}
       {/* <div className="movie_details">
         
       </div> */}
-      <div className="movieBanner_faded">
-        <button onClick={() =>handleClick("overview")} className="movie_button">Overview</button>
-        <button onClick={() =>handleClick("company")} className="movie_button">Production Companies</button></div>
-    </div>
+  
+    </Container>
   );
 };
 
 export default MovieBanner;
+const Container = styled.div`
+display: flex;
+z-index: 1;
+height: 500px;
+width: 100%;
+&:before{
+  position: absolute;
+  content: "";
+  background-image: url("https://image.tmdb.org/t/p/original/${({movie}) => movie?.backdrop_path}") ;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+width: 100%;
+height: 540px;
+}
+&:after{
+  width: 100%;
+  height: 540px;
+  position: absolute;
+  content: "";
+  background-image: linear-gradient(to right, rgba(0,0,0, 0.7) 150px, rgba(0,0,0, 0.54) 100%);
+ z-index: 1;
+}
+`
+const MoviePoster = styled.img`
+  object-fit: contain;
+  border: 2px solid white;
+  border-radius: 4px;
+  height: 80%;
+  margin-left: 30px;
+  margin-top: 80px;
+  z-index: 99;
+`
+
