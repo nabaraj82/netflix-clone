@@ -112,11 +112,11 @@ width: 100%;
   background-position: center;
   z-index: -1;
 width: 100%;
-height: 540px;
+height: 500px;
 }
 &:after{
   width: 100%;
-  height: 540px;
+  height: 500px;
   position: absolute;
   content: "";
   background-image: linear-gradient(to right, rgba(0,0,0, 0.7) 150px, rgba(0,0,0, 0.54) 100%);
@@ -132,4 +132,3 @@ const MoviePoster = styled.img`
   margin-top: 80px;
   z-index: 99;
 `
-
