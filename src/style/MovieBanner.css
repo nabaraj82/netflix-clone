@@ -122,4 +122,9 @@
 }
 .youtube{
     z-index: 999;
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 5%;
+    
+    ;
 }
