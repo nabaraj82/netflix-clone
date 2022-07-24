@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import axios from "axios";
 import "../style/MovieBanner.css";
 // import movieTrailer from "movie-trailer";
@@ -9,7 +9,7 @@ import { truncateDate } from "../functions/truncateDate";
 import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { red } from "@mui/material/colors";
-const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID , handleClick}) => {
+const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID }) => {
   const runtime = movieDetail.runtime/60;
   // const [movieDetail, setMovieDetail] = useState([]);
   // const [trailerID, setTrailerID] = useState("");
