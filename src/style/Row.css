@@ -23,6 +23,7 @@
 }
 .row_poster:hover{
     transform: scale(1.2);
+    cursor: pointer;
 }
 .row_title{
     font-weight: 500;
