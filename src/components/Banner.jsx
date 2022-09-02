@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import InfoIcon from '@mui/icons-material/Info';
 import { truncate} from '../functions/truncate';
 import { truncateDate } from '../functions/truncateDate';
 import '../style/Banner.css'
@@ -24,6 +25,7 @@ const Banner = () => {
 //    const truncateDate = (str) =>{
 //     return str.length > 4? str.slice(0, 4) : str;
 //    }
+console.log("banner background: ", movie.backdrop_path)
   return (
     <header className='banner_container'
     style={{
@@ -34,23 +36,24 @@ const Banner = () => {
     >
         <div className='banner_contents'>
             <h1 className='banner_title'>{movie?.title || movie?.name || movie?.original_name} </h1>
-            <div className='banner_info'>
+            {/* <div className='banner_info'>
                 <h4 className='banner_release_date'>{truncateDate(movie.first_air_date)}</h4>
                 <h4 className='banner_rating'><span>Rating </span>{movie.vote_average}</h4>
-            </div>
-            <div className='banner_buttons'>
-                <button className="banner_button">
-                    <PlayCircleFilledWhiteOutlinedIcon className='button_playIcon'/>
-                    Play
-                    </button>
-                <button className="banner_button">
-                <AddCircleOutlineOutlinedIcon className='button_myListIcon' />
-                MyList
-                </button>
-            </div>
+            </div> */}
+            
             
             
             <h2 className="banner_description">{truncate(movie.overview, 150)}</h2>
+              <div className='banner_buttons'>
+                  <button className="banner_button">
+                      <PlayCircleFilledWhiteOutlinedIcon className='button_playIcon' />
+                      Play
+                  </button>
+                  <button className="banner_button more_info">
+                      <InfoIcon className='button_myListIcon' />
+                      More Info
+                  </button>
+              </div>
         </div>
        
         <div className='banner_faded' />

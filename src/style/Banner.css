@@ -37,12 +37,16 @@
     margin-right: 20px;
     padding: 5px 16px;
     border: none;
-    border-radius: 14px;
+    border-radius: 6px;
     letter-spacing: 2px;
-    background-color: #f52626;
-    color: white;
+    background-color: white;
+    color: black;
     transition: all 500ms;
     align-items: center;
+}
+.more_info{
+    color: white;
+    background-color: rgba(109,109,110,0.7);
 }
 .button_playIcon{
     margin-right: 4px;
@@ -51,8 +55,11 @@
     margin-right: 4px;
 }
 .banner_button:hover{
-    filter: invert(100%);
+    background-color: rgba(255, 255, 255, 0.4);
 }
+/* .more_info:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+} */
 .banner_description{
     margin-top: 10px;
     max-width: 360px;

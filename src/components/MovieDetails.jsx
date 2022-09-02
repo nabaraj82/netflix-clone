@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import movieTrailer from "movie-trailer";
@@ -7,12 +7,19 @@ import { API_KEY } from "../requests";
 
 import MovieBanner from "./MovieBanner";
 import Recommendation from "./Recommendation";
+
 const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState([]);
   const [trailerID, setTrailerID] = useState("");
   const location = useLocation();
   const [show, setShow] = useState(false);
   const movie = location?.state.name;
+  const navigate = useNavigate();
+  
+  const navigateToCasterPage = (personID) =>{
+    navigate('/caster-profile',{state:{name: personID}})
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       await axios
@@ -65,8 +72,7 @@ const MovieDetails = () => {
         <RowContainer className={`${show? "showScroll" : ""}`}>
           {
             show?movieDetail.credits?.cast?.slice(0, MovieDetails.credits?.cast.length).map((profile) => (
-              <ProfileLink to="/caster-profile" key={profile.id}>
-                <RowItem >
+              <RowItem onClick={() => navigateToCasterPage(profile.id)} key={profile.id}>
                   <Image>
                     <ProfileImage
                       src={`https://image.tmdb.org/t/p/original/${profile.profile_path}`}
@@ -76,22 +82,25 @@ const MovieDetails = () => {
                   <Name>{profile.name || profile.original_name}</Name>
                   <CharacterName>{profile.character}</CharacterName>
                 </RowItem>
-              </ProfileLink>
             ))
             :
             movieDetail.credits?.cast?.slice(0,5).map((profile) => (
-              <ProfileLink to="/caster-profile" key={profile.id}>
-                <RowItem >
+              // <ProfileLink to="/caster-profile" key={profile.id}>
+              <RowItem onClick={() => navigateToCasterPage(profile.id)} key={profile.id}>
                   <Image>
-                    <ProfileImage
-                      src={`https://image.tmdb.org/t/p/original/${profile.profile_path}`}
-                      alt="profile"
-                    />
-                  </Image>
+                {profile?.profile_path !== null  ?
+                   <ProfileImage
+                     src={`https://image.tmdb.org/t/p/original/${profile.profile_path}`}
+                     alt="profile"
+                   />
+                   :
+                   <span>profile picture unavailable</span>
+                 }
+                    </Image>
                   <Name>{profile.name || profile.original_name}</Name>
                   <CharacterName>{profile.character}</CharacterName>
                 </RowItem>
-              </ProfileLink>
+              // </ProfileLink>
             ))
           }
         <ViewAll onClick={setViewAllLength}>{show? "close" : "view all"}</ViewAll>
@@ -177,10 +186,6 @@ const Name = styled.p`
   text-align: center;
   color: white;
 `;
-const ProfileLink = styled(Link)`
-  text-decoration: none;
-  cursor: pointer;
-`
 const CharacterName = styled.p`
   color: white;
   text-align: center;
