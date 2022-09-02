@@ -9,6 +9,7 @@ import { truncateDate } from "../functions/truncateDate";
 import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { red } from "@mui/material/colors";
+import {truncate} from '../functions/truncate'
 const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID }) => {
   const runtime = movieDetail.runtime/60;
   // const [movieDetail, setMovieDetail] = useState([]);
@@ -77,7 +78,7 @@ const MovieBanner = ({ movie, onClickTrailerButton, movieDetail, trailerID }) =>
           </h3>
           <h3 className="attributes duration"><span>Duration: {runtime.toFixed(2)} hrs </span></h3>
         </div>
-        <h3 className="movie_overview">{movie.overview}</h3>
+        <h3 className="movie_overview">{truncate(movie.overview, 150)}</h3>
         <div className='movieBanner_buttons'>
                 <button className="movieBanner_button">
                     <PlayCircleFilledWhiteOutlinedIcon className='button_playIcon'/>
